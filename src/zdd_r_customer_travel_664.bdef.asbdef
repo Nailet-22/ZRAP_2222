@@ -15,8 +15,12 @@ authorization master ( global, instance )
   delete;
   field ( numbering : managed, readonly ) CustomerUuid;
   field ( mandatory ) CustomerId;
-  field ( readonly ) Description;
-  action ( features : instance, authorization : update ) acceptClients result [1] $self;
+  field ( readonly ) Description, FlightDate, CurrencyCode, OverallStatus;
+  field ( features : instance ) Price;
+
+  action ( features : instance, authorization : update ) acceptClients
+    parameter ZDD_AE_CUSTOMER_TRAVEL_664 result [1] $self;
+
   action ( features : instance, authorization : update ) rejectClients result [1] $self;
 
   validation validateCustomer on save { create; field CustomerId; }
@@ -26,7 +30,8 @@ authorization master ( global, instance )
   determine action validateCustomerFormat { validation validateCustomer; }
 
   side effects
-  { field CustomerId affects field Description;
+  {
+    field CustomerId affects field Description;
 
     determine action validateCustomerFormat executed on field CustomerId affects messages;
   }
@@ -41,7 +46,11 @@ authorization master ( global, instance )
 
   mapping for zcustomers_664
     {
-      CustomerId  = customer_id;
-      Description = description;
+      CustomerId    = customer_id;
+      Description   = description;
+      FlightDate    = flight_date;
+      Price         = price;
+      CurrencyCode  = currency_code;
+      OverallStatus = overall_status;
     }
 }

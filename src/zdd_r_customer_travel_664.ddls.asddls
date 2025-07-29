@@ -7,7 +7,12 @@ define root view entity ZDD_R_CUSTOMER_TRAVEL_664
 {
   key customer_uuid         as CustomerUuid,
       customer_id           as CustomerId,
+      flight_date           as FlightDate,
       description           as Description,
+      @Semantics.amount.currencyCode : 'CurrencyCode'
+      price                 as Price,
+      currency_code         as CurrencyCode,
+      overall_status as OverallStatus,
       // audit components
       @Semantics.user.createdBy: true
       local_created_by      as LocalCreatedBy,
