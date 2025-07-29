@@ -9,39 +9,25 @@ annotate entity ZDD_C_CUSTOMER_TRAVEL_664 with
   @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Customer_StdVH', element: 'LastName' },
                                        useForValidation: true }]
 
-  @UI: {lineItem: [{ position: 10,
-                     importance: #HIGH,
-                     label: 'Customer ID'},
-                     { type: #FOR_ACTION,
-                       dataAction: 'acceptClients',
-                       label: 'Accept Clients',
-                       position: 10
-                     },
-                     {
-                     type: #FOR_ACTION,
-                       dataAction: 'rejectClients',
-                       label: 'reject clients',
-                       position: 20
-                     }
-                     ],
-                     selectionField: [{ position: 10 }],
-                     identification: [{ position: 10 },
-                                      { type: #FOR_ACTION,
-                                        dataAction: 'acceptClients',
-                                        label: 'Accept Clients',
-                                        position: 10 },
-                                      { type: #FOR_ACTION,
-                                        dataAction: 'rejectClients',
-                                        label: 'reject clients',
-                                        position: 20 }
-                     ],
-                     textArrangement: #TEXT_FIRST }
 
-  @UI.facet: [{ id: 'CustomerDetails',
-                purpose: #STANDARD,
-                type: #IDENTIFICATION_REFERENCE,
-                label: 'Customer Details',
-                position: 10 }]
+@UI: {lineItem: [{ position: 10, importance: #HIGH, label: 'Customer ID'}, 
+                 { type: #FOR_ACTION, dataAction: 'accept_clients', 
+                   label: 'Accept Clients', position: 10}, 
+                 { type: #FOR_ACTION, dataAction: 'Reject Clients', 
+                   label: 'reject clients', position: 20} ], 
+      selectionField: [{ position: 10 }], 
+                         identification: [{ position: 10 }, 
+                         { type: #FOR_ACTION, dataAction: 'accept_clients', 
+                           label: 'Accept Clients', position: 10}, 
+                         { type: #FOR_ACTION, dataAction: 'Reject Clients', 
+                           label: 'reject clients', position: 20}], 
+      textArrangement: #TEXT_FIRST } 
+ 
+ @UI.facet: [{ id: 'CustomerDetails', 
+               purpose: #STANDARD, 
+               type: #IDENTIFICATION_REFERENCE, 
+               label: 'Customer Details', 
+               position: 10 }]
   CustomerId;
 
   @UI: {lineItem: [{ position: 20,
