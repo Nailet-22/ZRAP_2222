@@ -11,15 +11,15 @@ annotate entity ZDD_C_CUSTOMER_TRAVEL_664 with
 
 
 @UI: {lineItem: [{ position: 10, importance: #HIGH, label: 'Customer ID'}, 
-                 { type: #FOR_ACTION, dataAction: 'accept_clients', 
+                 { type: #FOR_ACTION, dataAction: 'acceptClients', 
                    label: 'Accept Clients', position: 10}, 
-                 { type: #FOR_ACTION, dataAction: 'Reject Clients', 
+                 { type: #FOR_ACTION, dataAction: 'rejectClients', 
                    label: 'reject clients', position: 20} ], 
       selectionField: [{ position: 10 }], 
                          identification: [{ position: 10 }, 
-                         { type: #FOR_ACTION, dataAction: 'accept_clients', 
+                         { type: #FOR_ACTION, dataAction: 'acceptClients', 
                            label: 'Accept Clients', position: 10}, 
-                         { type: #FOR_ACTION, dataAction: 'Reject Clients', 
+                         { type: #FOR_ACTION, dataAction: 'rejectClients', 
                            label: 'reject clients', position: 20}], 
       textArrangement: #TEXT_FIRST } 
  

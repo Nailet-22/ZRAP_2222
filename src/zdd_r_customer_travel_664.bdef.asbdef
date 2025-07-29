@@ -1,0 +1,47 @@
+managed implementation in class zbp_dd_r_customer_travel_664 unique;
+strict ( 2 );
+with draft;
+define behavior for ZDD_R_CUSTOMER_TRAVEL_664 //alias <alias_name>
+persistent table zcustomers_664
+draft table zcustomers_d_664
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( global, instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( numbering : managed, readonly ) CustomerUuid;
+  field ( mandatory ) CustomerId;
+  field ( readonly ) Description;
+  action ( features : instance, authorization : update ) acceptClients result [1] $self;
+  action ( features : instance, authorization : update ) rejectClients result [1] $self;
+
+  validation validateCustomer on save { create; field CustomerId; }
+
+  determination setDescription on save { create; }
+
+  determine action validateCustomerFormat { validation validateCustomer; }
+
+  side effects
+  { field CustomerId affects field Description;
+
+    determine action validateCustomerFormat executed on field CustomerId affects messages;
+  }
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare
+  {
+    validation validateCustomer;
+  }
+
+  mapping for zcustomers_664
+    {
+      CustomerId  = customer_id;
+      Description = description;
+    }
+}
