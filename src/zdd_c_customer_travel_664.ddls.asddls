@@ -2,6 +2,7 @@
 @EndUserText.label: 'CDS - Consumption Entity for RAP'
 @Metadata.ignorePropagatedAnnotations: true
 @Search.searchable: true
+@Metadata.allowExtensions: true
 define root view entity ZDD_C_CUSTOMER_TRAVEL_664
   provider contract transactional_query
   as projection on ZDD_R_CUSTOMER_TRAVEL_664
